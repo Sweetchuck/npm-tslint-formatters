@@ -1,0 +1,8 @@
+## Executables
+
+
+{% for binName, binInfo in bins -%}
+### Bin - {{ binName }}
+
+{{ binInfo.description }}
+{%- endfor -%}

@@ -1,0 +1,15 @@
+
+/coverage/
+/fixtures/
+/node_modules/
+/src/
+/tests/
+/tmp/
+/typings/
+.gitignore
+.istanbul.yml
+.npmignore
+.travis.yml
+data-merge-*.tgz
+tsd.json
+tslint.json

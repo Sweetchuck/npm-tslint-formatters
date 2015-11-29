@@ -1,0 +1,37 @@
+
+install:
+  commandOptions: '--save-dev'
+
+badges:
+  travisStatus:
+    visible: true
+    branch: 'master'
+  npmDependencies:
+    visible: true
+  npmDevDependencies:
+    visible: true
+  coveralls:
+    visible: true
+    branch: 'master'
+
+bins:
+  tslint-formatters-convert:
+    description: |
+      Convert yaml to checkstyle.
+      This is a walkaround for this problem https://github.com/palantir/tslint/issues/680
+
+      For more information run `node bin/tslint-formatters-convert --help`
+
+      Basic usage:
+
+      `tslint --formatters-dir path/to/tslint-formatters/lib/tslint/formatters --format yaml foo.ts | tslint-formatters-convert yaml2checkstyle`
+
+      or
+
+      `tslint --formatters-dir path/to/tslint-formatters/lib/tslint/formatters --format checkstyle foo.ts | tslint-formatters-convert checkstyle2checkstyle`
+
+releaseHistory:
+  v0.1.0:
+    date: '2015-12-04'
+    changes:
+      - 'Initial release with basic functionality.'

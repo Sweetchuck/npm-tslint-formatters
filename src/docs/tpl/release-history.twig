@@ -1,0 +1,7 @@
+{% import '../macro/list.twig' as list -%}
+## Release History
+
+{% for rhVersion, rhItem in releaseHistory -%}
+* **{{ rhVersion }}** - {{ rhItem.date }}
+{{- list.bullet(rhItem.changes, 1) -}}
+{% endfor -%}

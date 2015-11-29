@@ -1,0 +1,13 @@
+{% import '../macro/badge.twig' as badge -%}
+{% if badges.travisStatus.visible -%}
+  {{- badge.travisStatus(repository.owner, repository.name, badges.travis.branch) -}}
+{%- endif -%}
+{% if badges.npmDependencies.visible -%}
+  {{- badge.npmDependencies(repository.owner, repository.name) -}}
+{%- endif -%}
+{% if badges.npmDevDependencies.visible -%}
+  {{- badge.npmDevDependencies(repository.owner, repository.name) -}}
+{%- endif -%}
+{% if badges.coveralls.visible -%}
+  {{- badge.coveralls(repository.owner, repository.name, badges.coveralls.branch) -}}
+{%- endif -%}

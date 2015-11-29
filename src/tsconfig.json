@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "removeComments": false,
+    "sourceMap": false
+  },
+  "files": [
+    "../typings/js-yaml/js-yaml.d.ts",
+    "../typings/nodeunit/nodeunit.d.ts",
+    "bin/tslint-formatters-convert.ts",
+    "lib/cli/TslintFormattersConvert.ts",
+    "lib/tslint/formatters/checkstyleFormatter.ts",
+    "lib/tslint/formatters/checkstyleRelativeFormatter.ts",
+    "lib/tslint/formatters/yamlFormatter.ts",
+    "lib/tslint/formatters/index.ts",
+    "tests/cli/TslintFormattersConvert.ts",
+    "tests/lib/tslint/formatters/checkstyleFormatter.ts",
+    "tests/lib/tslint/formatters/checkstyleRelativeFormatter.ts",
+    "tests/lib/tslint/formatters/index.ts",
+    "tests/lib/tslint/formatters/yamlFormatter.ts",
+    "tests/index.ts",
+    "typings/tsd.d.ts",
+    "typings/xmlbuilder.d.ts",
+    "index.ts"
+  ]
+}

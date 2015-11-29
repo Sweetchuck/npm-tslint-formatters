@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle>
+  <file name="%path%file-1.ts">
+    <error line="11" column="12" severity="severity-11" source="source-11" message="message-11"/>
+    <error line="13" column="14" severity="severity-12" source="source-12" message="message-12"/>
+  </file>
+  <file name="%path%file-2.ts">
+    <error line="21" column="22" severity="severity-21" source="source-21" message="message-21"/>
+    <error line="23" column="24" severity="severity-22" source="source-22" message="message-22"/>
+  </file>
+  <file name="%path%file-3.ts">
+    <error line="31" column="32" severity="severity-31" source="source-31" message="message-31"/>
+    <error line="33" column="34" severity="severity-32" source="source-32" message="message-32"/>
+  </file>
+</checkstyle>

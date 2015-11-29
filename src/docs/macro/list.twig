@@ -1,0 +1,18 @@
+{% macro base(type, items, indent) -%}
+  {% set indent = indent|default(0) -%}
+  {% set prefix = '' -%}
+  {% for i in Array(indent) -%}
+    {% set prefix += '  ' -%}
+  {% endfor -%}
+  {% for item in items %}
+{{ prefix }}{{ type }} {{ item -}}
+  {% endfor -%}
+{% endmacro -%}
+
+{% macro bullet(items, indent) -%}
+  {{ base('*', items, indent) }}
+{% endmacro -%}
+
+{% macro numbered(items, indent) -%}
+  {{ base('#', items, indent) }}
+{% endmacro -%}

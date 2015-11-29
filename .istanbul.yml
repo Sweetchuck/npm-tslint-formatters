@@ -1,0 +1,24 @@
+
+instrumentation:
+  root: '.'
+  include-all-sources: true
+  excludes:
+    - 'bin/**/*.js'
+    - 'fixtures/**/*.js'
+    - 'src/**/*.js'
+    - 'tmp/**/*.js'
+
+reporting:
+  dir: './coverage'
+
+check:
+  global:
+    statements: 95,
+    branches: 90,
+    lines: 95,
+    functions: 95
+  each:
+    statements: 95,
+    branches: 90,
+    lines: 95,
+    functions: 95

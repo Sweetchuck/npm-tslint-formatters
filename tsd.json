@@ -1,0 +1,21 @@
+{
+  "version": "v4",
+  "repo": "DefinitelyTyped/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "js-yaml/js-yaml.d.ts": {
+      "commit": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+    },
+    "node/node.d.ts": {
+      "commit": "f6c8ca47193fb67947944a3170912672ac3e908e"
+    },
+    "nodeunit/nodeunit.d.ts": {
+      "commit": "d202e275b263219946050e94463a5250c0ac93f6"
+    },
+    "mkdirp/mkdirp.d.ts": {
+      "commit": "78d36dd49b6b55b9fdfe61776a12bf05c8b07777"
+    }
+  }
+}

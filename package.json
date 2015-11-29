@@ -1,0 +1,99 @@
+{
+  "version": "0.1.0",
+  "name": "tslint-formatters",
+  "description": "Implements various formatters for tslint.",
+  "main": "index.js",
+  "keywords": [
+    "typescript",
+    "tslint",
+    "lint",
+    "checkstyle",
+    "formatter",
+    "reporter"
+  ],
+  "license": "GPL-2.0+",
+  "homepage": "https://github.com/Sweetchuck/npm-tslint-formatters.git",
+  "bugs": {
+    "url": "https://github.com/Sweetchuck/npm-tslint-formatters/issues"
+  },
+  "repository": {
+    "type": "git",
+    "owner": "Sweetchuck",
+    "name": "npm-tslint-formatters",
+    "url": "https://github.com/Sweetchuck/npm-tslint-formatters.git"
+  },
+  "author": {
+    "name": "Andor Dávid",
+    "url": "https://github.com/Sweetchuck",
+    "github": "Sweetchuck",
+    "twitter": "andor_david",
+    "linkedin": "andor-dávid/5b/484/b83"
+  },
+  "dependencies": {
+    "cli": "^0.11.1",
+    "js-yaml": "^3.4.6",
+    "mkdirp": "^0.5.1",
+    "xmlbuilder": "^4.1.0"
+  },
+  "devDependencies": {
+    "data-merge": "^1.0.1",
+    "istanbul": "^0.4.1",
+    "nodeunit": "^0.9.1",
+    "swig": "^1.4.2",
+    "tsd": "^0.6.3",
+    "tslint": "^3.1.1",
+    "typescript": "^1.7.3"
+  },
+  "files": [
+    "bin/tslint-formatters-convert.js",
+    "lib/cli/TslintFormattersConvert.js",
+    "lib/tslint/formatters/checkstyleFormatter.js",
+    "lib/tslint/formatters/checkstyleRelativeFormatter.js",
+    "lib/tslint/formatters/index.js",
+    "lib/tslint/formatters/yamlFormatter.js",
+    "src/typings/cli.d.ts",
+    "src/typings/tsd.d.ts",
+    "src/typings/tslint-formatters.d.ts",
+    "src/typings/xmlbuilder.d.ts",
+    "index.js",
+    "package.json",
+    "npm-shrinkwrap.json",
+    "README.md"
+  ],
+  "bin": {
+    "tslint-formatters-convert": "bin/tslint-formatters-convert.js"
+  },
+  "scripts": {
+    "get-started": "npm run tsd && npm run tsc && npm run swig-docs",
+    "tsd": "npm run tsd-update && npm run tsd-rebundle",
+    "tsd-update": "tsd update --overwrite",
+    "tsd-rebundle": "tsd rebundle",
+    "pretsc": "npm run clear-src",
+    "tsc": "tsc --outDir . --project src",
+    "posttsc": "npm run shebang",
+    "shebang": "for binFileName in bin/*.js; do sed -i '1i#!/usr/bin/env node' $binFileName; done",
+    "tsc-and-test": "npm run tsc && npm test",
+    "test": "npm run test-istanbul",
+    "pretest-istanbul": "npm run clear-coverage",
+    "test-istanbul": "istanbul cover nodeunit $(find ./tests -name '*.js')",
+    "posttest-istanbul": "npm run check-test-coverage-istanbul",
+    "check-test-coverage-istanbul": "istanbul check-coverage",
+    "pretest-custom": "npm run tsc",
+    "test-custom": "nodeunit",
+    "lint": "npm run lint-ts",
+    "lint-ts": "tslint --config tslint.json --format verbose $(git ls-files -- '*.ts')",
+    "clear": "npm run clear-coverage && npm run clear-src && npm run clear-tmp",
+    "clear-src": "rm -rf bin lib tasks tests",
+    "clear-coverage": "rm -rf coverage",
+    "clear-tmp": "rm -rf tmp",
+    "mkdir-tmp": "[[ -d 'tmp' ]] || mkdir -p 'tmp'",
+    "preswig-docs-data": "npm run mkdir-tmp",
+    "swig-docs": "npm run swig-docs-data && npm run swig-docs-render",
+    "swig-docs-data": "data-merge merge package.json src/docs/variables.yml > tmp/swig.json",
+    "swig-docs-render": "swig render --json tmp/swig.json src/docs/README.twig > README.md",
+    "git-is-clean": "[[ -z $(git status -s) ]]",
+    "preunpack": "npm pack && npm run clear-tmp && npm run mkdir-tmp",
+    "unpack": "tar zxvf tslint-formatters-*.tgz -C tmp/",
+    "publishable": "npm run clear && npm run tsc && npm run swig-docs && npm shrinkwrap --dev && npm run lint && npm run git-is-clean"
+  }
+}

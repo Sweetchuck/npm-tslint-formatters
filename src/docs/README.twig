@@ -1,0 +1,21 @@
+# {{ name }}
+
+{% include 'tpl/badges.twig' %}
+
+{{ description }}
+
+{% include 'tpl/install.twig' %}
+
+{% if bins -%}
+  {%- include 'tpl/executables.twig' -%}
+{%- endif %}
+
+{% include 'tpl/contributing.twig' %}
+
+{% include 'tpl/author.twig' %}
+
+{% if releaseHistory -%}
+  {%- include 'tpl/release-history.twig' -%}
+{%- endif %}
+
+{% include 'tpl/license.twig' %}

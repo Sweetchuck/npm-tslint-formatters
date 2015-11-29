@@ -1,0 +1,72 @@
+---
+failures:
+  - endPosition:
+      character: 12
+      line: 11
+      position: 518
+    failure: 'message-11'
+    name: 'file-1.ts'
+    ruleName: 'source-11'
+    startPosition:
+      character: 12
+      line: 11
+      position: 517
+  - endPosition:
+      character: 13
+      line: 12
+      position: 518
+    failure: 'message-12'
+    name: 'file-1.ts'
+    ruleName: 'source-12'
+    startPosition:
+      character: 14
+      line: 13
+      position: 517
+---
+failures:
+  - endPosition:
+      character: 22
+      line: 21
+      position: 518
+    failure: 'message-21'
+    name: 'file-2.ts'
+    ruleName: 'source-21'
+    startPosition:
+      character: 22
+      line: 21
+      position: 517
+  - endPosition:
+      character: 23
+      line: 22
+      position: 518
+    failure: 'message-22'
+    name: 'file-2.ts'
+    ruleName: 'source-22'
+    startPosition:
+      character: 24
+      line: 23
+      position: 517
+---
+failures:
+  - endPosition:
+      character: 32
+      line: 31
+      position: 518
+    failure: 'message-31'
+    name: 'file-3.ts'
+    ruleName: 'source-31'
+    startPosition:
+      character: 32
+      line: 31
+      position: 517
+  - endPosition:
+      character: 33
+      line: 32
+      position: 518
+    failure: 'message-32'
+    name: 'file-3.ts'
+    ruleName: 'source-32'
+    startPosition:
+      character: 34
+      line: 33
+      position: 517
