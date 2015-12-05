@@ -36,6 +36,7 @@
     "xmlbuilder": "^4.1.0"
   },
   "devDependencies": {
+    "coveralls": "^2.11.4",
     "data-merge": "^1.0.1",
     "istanbul": "^0.4.1",
     "nodeunit": "^0.9.1",
@@ -45,16 +46,9 @@
     "typescript": "^1.7.3"
   },
   "files": [
-    "bin/tslint-formatters-convert.js",
-    "lib/cli/TslintFormattersConvert.js",
-    "lib/tslint/formatters/checkstyleFormatter.js",
-    "lib/tslint/formatters/checkstyleRelativeFormatter.js",
-    "lib/tslint/formatters/index.js",
-    "lib/tslint/formatters/yamlFormatter.js",
-    "src/typings/cli.d.ts",
-    "src/typings/tsd.d.ts",
-    "src/typings/tslint-formatters.d.ts",
-    "src/typings/xmlbuilder.d.ts",
+    "bin/*",
+    "lib/*",
+    "src/typings/*",
     "index.js",
     "package.json",
     "npm-shrinkwrap.json",
