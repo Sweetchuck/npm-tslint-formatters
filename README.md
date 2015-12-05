@@ -23,13 +23,15 @@ This is a walkaround for this problem https://github.com/palantir/tslint/issues/
 
 For more information run `node bin/tslint-formatters-convert --help`
 
-Basic usage:
+__Original output is YAML and it is converted to checkstyle__
 
-`tslint --formatters-dir path/to/tslint-formatters/lib/tslint/formatters --format yaml foo.ts | tslint-formatters-convert yaml2checkstyle`
+`tslint --formatters-dir ./node_modules/tslint-formatters/lib/tslint/formatters --format yaml foo.ts | tslint-formatters-convert yaml2checkstyle`
 
 or
 
-`tslint --formatters-dir path/to/tslint-formatters/lib/tslint/formatters --format checkstyle foo.ts | tslint-formatters-convert checkstyle2checkstyle`
+__Original output is an incorrect checkstyle and it is fixed with a simple string replace.__
+
+`tslint --formatters-dir ./node_modules/tslint-formatters/lib/tslint/formatters --format checkstyle foo.ts | tslint-formatters-convert checkstyle2checkstyle`
 
 
 ## Contributing
