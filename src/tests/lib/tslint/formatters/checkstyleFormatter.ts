@@ -12,13 +12,13 @@ import * as xmlBuilder from 'xmlbuilder';
 import * as TslintFormatters from 'tslint-formatters';
 import * as CheckstyleFormatter from '../../../../lib/tslint/formatters/checkstyleFormatter';
 
-export var formatter: NodeUnit.ITestGroup = {
+export let formatter: NodeUnit.ITestGroup = {
 
   'resolveFileName': function (test: NodeUnit.Test): void {
     test.expect(1);
 
-    var fileName: string;
-    var checkstyleFormatter: CheckstyleFormatter.Formatter;
+    let fileName: string;
+    let checkstyleFormatter: CheckstyleFormatter.Formatter;
 
     checkstyleFormatter = new CheckstyleFormatter.Formatter();
     fileName = '.';
@@ -32,7 +32,7 @@ export var formatter: NodeUnit.ITestGroup = {
   },
 
   'format': function (test: NodeUnit.Test): void {
-    var checkstyleFormatter: CheckstyleFormatter.Formatter;
+    let checkstyleFormatter: CheckstyleFormatter.Formatter;
 
     checkstyleFormatter = new CheckstyleFormatter.Formatter({
       path: Path,
@@ -51,12 +51,12 @@ export var formatter: NodeUnit.ITestGroup = {
   },
 
   'process': function (test: NodeUnit.Test): void {
-    var pathPrefix: string = Path.resolve('.');
-    var checkstyleFormatter: CheckstyleFormatter.Formatter;
-    var c: number;
-    var f: number;
-    var fileName: string;
-    var cases: {
+    let pathPrefix: string = Path.resolve('.');
+    let checkstyleFormatter: CheckstyleFormatter.Formatter;
+    let c: number;
+    let f: number;
+    let fileName: string;
+    let cases: {
       files: {
         [fileName: string]: TslintFormatters.ICheckstyleEntry[]
       },

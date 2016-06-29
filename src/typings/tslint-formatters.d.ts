@@ -1,5 +1,6 @@
 /**
- * Created by andor on 11/29/15.
+ * @file
+ * Documentation missing.
  */
 
 declare module 'tslint-formatters' {

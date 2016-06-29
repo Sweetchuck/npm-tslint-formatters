@@ -12,7 +12,7 @@ import * as Path from 'path';
 import * as mkDir from 'mkdirp';
 import * as JsYaml from 'js-yaml';
 
-var context: {
+let context: {
   fixturesDir: string,
   mockCliOutput: (output: string) => void,
   mockCliOutputResult: string,
@@ -29,12 +29,12 @@ context = {
   },
 };
 
-export var option: NodeUnit.ITestGroup = {
+export let option: NodeUnit.ITestGroup = {
 
   'constructor': function (test: NodeUnit.Test): void {
     test.expect(7);
 
-    var myOption: TslintFormatterConvert.Option;
+    let myOption: TslintFormatterConvert.Option;
 
     myOption = new TslintFormatterConvert.Option();
     test.equal(myOption.name, null, 'After create the default values are empty.');
@@ -59,12 +59,12 @@ export var option: NodeUnit.ITestGroup = {
 
 };
 
-export var optionString: NodeUnit.ITestGroup = {
+export let optionString: NodeUnit.ITestGroup = {
 
   'constructor': function (test: NodeUnit.Test): void {
     test.expect(7);
 
-    var myOption: TslintFormatterConvert.OptionString;
+    let myOption: TslintFormatterConvert.OptionString;
 
     myOption = new TslintFormatterConvert.OptionString();
     test.equal(myOption.name, null, 'After create the default values are empty.');
@@ -88,16 +88,16 @@ export var optionString: NodeUnit.ITestGroup = {
 
 };
 
-export var handler: NodeUnit.ITestGroup = {
+export let handler: NodeUnit.ITestGroup = {
 
   setUp: (callback: NodeUnit.ICallbackFunction): void => {
-    var paths: string[][] = [
+    let paths: string[][] = [
       ['report', 'checkstyle.xml'],
       ['release', '1', 'checkstyle.xml'],
     ];
 
-    var p: number;
-    var fileName: string;
+    let p: number;
+    let fileName: string;
     for (p = 0; p < paths.length; p++) {
       while (paths[p].length) {
         fileName = Path.join(context.fixturesDir, ...paths[p]);
@@ -126,11 +126,11 @@ export var handler: NodeUnit.ITestGroup = {
   'optionDefinitions': function (test: NodeUnit.Test): void {
     test.expect(1);
 
-    var cli: ICli = require('cli');
-    var fs: typeof FS = require('fs');
-    var path: typeof Path = require('path');
-    var jsYaml: typeof JsYaml = require('js-yaml');
-    var converter: TslintFormatterConvert.Handler;
+    let cli: ICli = require('cli');
+    let fs: typeof FS = require('fs');
+    let path: typeof Path = require('path');
+    let jsYaml: typeof JsYaml = require('js-yaml');
+    let converter: TslintFormatterConvert.Handler;
 
     converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
     test.deepEqual(
@@ -152,12 +152,12 @@ export var handler: NodeUnit.ITestGroup = {
   'prepareDirectory': function (test: NodeUnit.Test): void {
     test.expect(1);
 
-    var cli: ICli = require('cli');
-    var fs: typeof FS = require('fs');
-    var path: typeof Path = require('path');
-    var jsYaml: typeof JsYaml = require('js-yaml');
-    var converter: TslintFormatterConvert.Handler;
-    var directoryName: string;
+    let cli: ICli = require('cli');
+    let fs: typeof FS = require('fs');
+    let path: typeof Path = require('path');
+    let jsYaml: typeof JsYaml = require('js-yaml');
+    let converter: TslintFormatterConvert.Handler;
+    let directoryName: string;
 
     converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
 
@@ -179,13 +179,13 @@ export var handler: NodeUnit.ITestGroup = {
     'file': function (test: NodeUnit.Test): void {
       test.expect(1);
 
-      var cli: ICli = require('cli');
-      var fs: typeof FS = require('fs');
-      var path: typeof Path = require('path');
-      var jsYaml: typeof JsYaml = require('js-yaml');
-      var converter: TslintFormatterConvert.Handler;
-      var outFileName: string;
-      var output: string;
+      let cli: ICli = require('cli');
+      let fs: typeof FS = require('fs');
+      let path: typeof Path = require('path');
+      let jsYaml: typeof JsYaml = require('js-yaml');
+      let converter: TslintFormatterConvert.Handler;
+      let outFileName: string;
+      let output: string;
 
       output = 'dummy';
       outFileName = path.join(context.fixturesDir, 'release', '1', 'checkstyle.xml');
@@ -206,14 +206,14 @@ export var handler: NodeUnit.ITestGroup = {
     'stdOut': function (test: NodeUnit.Test): void {
       test.expect(1);
 
-      var cli: ICli = require('cli');
-      var fs: typeof FS = require('fs');
-      var path: typeof Path = require('path');
-      var jsYaml: typeof JsYaml = require('js-yaml');
-      var converter: TslintFormatterConvert.Handler;
-      var outputExpected: string;
-      var outputActual: string;
-      var outputMock: {
+      let cli: ICli = require('cli');
+      let fs: typeof FS = require('fs');
+      let path: typeof Path = require('path');
+      let jsYaml: typeof JsYaml = require('js-yaml');
+      let converter: TslintFormatterConvert.Handler;
+      let outputExpected: string;
+      let outputActual: string;
+      let outputMock: {
         (
           message?: any,
           ...optionalParams: any[]
@@ -246,12 +246,12 @@ export var handler: NodeUnit.ITestGroup = {
   'readInput': function (test: NodeUnit.Test): void {
     test.expect(1);
 
-    var cli: ICli = require('cli');
-    var fs: typeof FS = require('fs');
-    var path: typeof Path = require('path');
-    var jsYaml: typeof JsYaml = require('js-yaml');
-    var converter: TslintFormatterConvert.Handler;
-    var inputFileName: string;
+    let cli: ICli = require('cli');
+    let fs: typeof FS = require('fs');
+    let path: typeof Path = require('path');
+    let jsYaml: typeof JsYaml = require('js-yaml');
+    let converter: TslintFormatterConvert.Handler;
+    let inputFileName: string;
 
     converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
     converter.main = function (
@@ -276,12 +276,12 @@ export var handler: NodeUnit.ITestGroup = {
   'cmdCheckstyle2Checkstyle': function (test: NodeUnit.Test): void {
     test.expect(1);
 
-    var cli: ICli = require('cli');
-    var fs: typeof FS = require('fs');
-    var path: typeof Path = require('path');
-    var jsYaml: typeof JsYaml = require('js-yaml');
-    var converter: TslintFormatterConvert.Handler;
-    var outputExpected: string;
+    let cli: ICli = require('cli');
+    let fs: typeof FS = require('fs');
+    let path: typeof Path = require('path');
+    let jsYaml: typeof JsYaml = require('js-yaml');
+    let converter: TslintFormatterConvert.Handler;
+    let outputExpected: string;
 
     cli.output = context.mockCliOutput;
 
@@ -313,12 +313,12 @@ export var handler: NodeUnit.ITestGroup = {
   'cmdYaml2Checkstyle': function (test: NodeUnit.Test): void {
     test.expect(1);
 
-    var cli: ICli = require('cli');
-    var fs: typeof FS = require('fs');
-    var path: typeof Path = require('path');
-    var jsYaml: typeof JsYaml = require('js-yaml');
-    var converter: TslintFormatterConvert.Handler;
-    var outputExpected: string;
+    let cli: ICli = require('cli');
+    let fs: typeof FS = require('fs');
+    let path: typeof Path = require('path');
+    let jsYaml: typeof JsYaml = require('js-yaml');
+    let converter: TslintFormatterConvert.Handler;
+    let outputExpected: string;
 
     cli.output = context.mockCliOutput;
 
@@ -350,12 +350,12 @@ export var handler: NodeUnit.ITestGroup = {
   'cmdYaml2CheckstyleRelative': function (test: NodeUnit.Test): void {
     test.expect(1);
 
-    var cli: ICli = require('cli');
-    var fs: typeof FS = require('fs');
-    var path: typeof Path = require('path');
-    var jsYaml: typeof JsYaml = require('js-yaml');
-    var converter: TslintFormatterConvert.Handler;
-    var outputExpected: string;
+    let cli: ICli = require('cli');
+    let fs: typeof FS = require('fs');
+    let path: typeof Path = require('path');
+    let jsYaml: typeof JsYaml = require('js-yaml');
+    let converter: TslintFormatterConvert.Handler;
+    let outputExpected: string;
 
     cli.output = context.mockCliOutput;
 
@@ -388,12 +388,12 @@ export var handler: NodeUnit.ITestGroup = {
     'checkstyle2checkstyle': function (test: NodeUnit.Test): void {
       test.expect(1);
 
-      var cli: ICli = require('cli');
-      var fs: typeof FS = require('fs');
-      var path: typeof Path = require('path');
-      var jsYaml: typeof JsYaml = require('js-yaml');
-      var converter: TslintFormatterConvert.Handler;
-      var outputExpected: string;
+      let cli: ICli = require('cli');
+      let fs: typeof FS = require('fs');
+      let path: typeof Path = require('path');
+      let jsYaml: typeof JsYaml = require('js-yaml');
+      let converter: TslintFormatterConvert.Handler;
+      let outputExpected: string;
 
       context.mockCliOutputResult = '';
       cli.output = context.mockCliOutput;
@@ -426,12 +426,12 @@ export var handler: NodeUnit.ITestGroup = {
     'yaml2checkstyleRelative': function (test: NodeUnit.Test): void {
       test.expect(1);
 
-      var cli: ICli = require('cli');
-      var fs: typeof FS = require('fs');
-      var path: typeof Path = require('path');
-      var jsYaml: typeof JsYaml = require('js-yaml');
-      var converter: TslintFormatterConvert.Handler;
-      var outputExpected: string;
+      let cli: ICli = require('cli');
+      let fs: typeof FS = require('fs');
+      let path: typeof Path = require('path');
+      let jsYaml: typeof JsYaml = require('js-yaml');
+      let converter: TslintFormatterConvert.Handler;
+      let outputExpected: string;
 
       context.mockCliOutputResult = '';
       cli.output = context.mockCliOutput;
@@ -464,12 +464,12 @@ export var handler: NodeUnit.ITestGroup = {
     'yaml2checkstyle': function (test: NodeUnit.Test): void {
       test.expect(1);
 
-      var cli: ICli = require('cli');
-      var fs: typeof FS = require('fs');
-      var path: typeof Path = require('path');
-      var jsYaml: typeof JsYaml = require('js-yaml');
-      var converter: TslintFormatterConvert.Handler;
-      var outputExpected: string;
+      let cli: ICli = require('cli');
+      let fs: typeof FS = require('fs');
+      let path: typeof Path = require('path');
+      let jsYaml: typeof JsYaml = require('js-yaml');
+      let converter: TslintFormatterConvert.Handler;
+      let outputExpected: string;
 
       context.mockCliOutputResult = '';
       cli.output = context.mockCliOutput;

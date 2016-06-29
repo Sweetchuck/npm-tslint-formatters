@@ -85,7 +85,7 @@ export class Formatter extends Tslint.Formatters.AbstractFormatter {
   };
 
   public format(failures: Tslint.RuleFailure[]): string {
-    var i: number;
+    let i: number;
 
     this.processStart();
 

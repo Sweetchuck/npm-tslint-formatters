@@ -247,7 +247,7 @@ interface ICli {
 
 declare module 'cli' {
 
-  var cli: ICli;
+  let cli: ICli;
 
   export = cli;
 

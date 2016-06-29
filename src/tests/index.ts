@@ -7,7 +7,7 @@ process.env.NODE_ENV = 'test';
 
 import * as NodeUnit from 'nodeunit';
 
-export var index: NodeUnit.ITestGroup = {
+export let index: NodeUnit.ITestGroup = {
 
   'include': function (test: NodeUnit.Test): void {
     test.expect(1);
