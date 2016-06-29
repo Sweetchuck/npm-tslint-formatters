@@ -1,0 +1,8 @@
+{
+  "globalDevDependencies": {
+    "js-yaml": "registry:dt/js-yaml#3.5.2+20160316171810",
+    "mkdirp": "registry:dt/mkdirp#0.3.0+20160317120654",
+    "node": "registry:dt/node#6.0.0+20160621231320",
+    "nodeunit": "registry:dt/nodeunit#0.0.0+20160316155526"
+  }
+}

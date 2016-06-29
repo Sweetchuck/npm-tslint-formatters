@@ -5,8 +5,6 @@
  * @link https://www.npmjs.com/package/cli
  */
 
-/// <reference path="../../typings/tsd.d.ts" />
-
 /**
  * 0: Short name.
  * 1: Description.

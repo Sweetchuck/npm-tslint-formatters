@@ -3,8 +3,6 @@
  * NodeUnit tests for lib/tslint/formatters/checkstyleFormatter.
  */
 
-/// <reference path="../../../../typings/tsd.d.ts" />
-
 process.env.NODE_ENV = 'test';
 
 import * as NodeUnit from 'nodeunit';

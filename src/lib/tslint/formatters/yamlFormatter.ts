@@ -3,8 +3,6 @@
  * Documentation missing.
  */
 
-/// <reference path="../../../typings/tsd.d.ts" />
-
 import * as Lint from 'tslint/lib/lint';
 
 export class Formatter extends Lint.Formatters.AbstractFormatter {

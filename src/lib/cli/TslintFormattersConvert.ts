@@ -3,9 +3,6 @@
  * Documentation missing.
  */
 
-/// <reference path="../../../typings/tsd.d.ts" />
-/// <reference path="../../typings/tsd.d.ts" />
-
 import * as FS from 'fs';
 import * as Path from 'path';
 import * as mkDir from 'mkdirp';

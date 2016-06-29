@@ -3,9 +3,6 @@
  * Documentation missing.
  */
 
-/// <reference path="../../typings/tsd.d.ts" />
-/// <reference path="../typings/tsd.d.ts" />
-
 import fs = require('fs');
 import path = require('path');
 import cli = require('cli');

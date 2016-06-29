@@ -3,8 +3,6 @@
  * Documentation missing.
  */
 
-/// <reference path="../../../typings/tsd.d.ts" />
-
 import * as Tslint from 'tslint/lib/lint';
 import * as Path from 'path';
 import * as XmlBuilder from 'xmlbuilder';
