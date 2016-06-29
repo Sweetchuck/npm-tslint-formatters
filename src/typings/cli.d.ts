@@ -78,7 +78,7 @@ interface ICli {
     /* tslint:enable:variable-name */
   ): void;
 
-  next() : string | boolean;
+  next(): string | boolean;
 
   parse(
     opts: CLIOptionDefinitions,

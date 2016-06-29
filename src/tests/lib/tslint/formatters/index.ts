@@ -13,7 +13,7 @@ import * as TSLintFormatter from 'tslint-formatters';
 
 export var index: NodeUnit.ITestGroup = {
 
-  'include': function (test: NodeUnit.Test) : void {
+  'include': function (test: NodeUnit.Test): void {
     test.expect(3);
 
     var propertyName: string;

@@ -16,7 +16,7 @@ import * as CheckstyleFormatter from '../../../../lib/tslint/formatters/checksty
 
 export var formatter: NodeUnit.ITestGroup = {
 
-  'resolveFileName': function (test: NodeUnit.Test) : void {
+  'resolveFileName': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var fileName: string;
@@ -33,7 +33,7 @@ export var formatter: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'format': function (test: NodeUnit.Test) : void {
+  'format': function (test: NodeUnit.Test): void {
     var checkstyleFormatter: CheckstyleFormatter.Formatter;
 
     checkstyleFormatter = new CheckstyleFormatter.Formatter({
@@ -52,7 +52,7 @@ export var formatter: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'process': function (test: NodeUnit.Test) : void {
+  'process': function (test: NodeUnit.Test): void {
     var pathPrefix: string = Path.resolve('.');
     var checkstyleFormatter: CheckstyleFormatter.Formatter;
     var c: number;
@@ -65,7 +65,7 @@ export var formatter: NodeUnit.ITestGroup = {
       expected: string,
       message: string,
     }[] = [
-      require('../../../../fixtures/checkstyle-definition')
+      require('../../../../fixtures/checkstyle-definition'),
     ];
 
     test.expect(cases.length);

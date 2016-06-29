@@ -28,7 +28,7 @@ export class Formatter extends Tslint.Formatters.AbstractFormatter {
 
   protected xml: XmlBuilder.IElement = null;
 
-  protected files: {[fileName: string] : XmlBuilder.IElement};
+  protected files: {[fileName: string]: XmlBuilder.IElement};
 
   constructor(
     dependencies?: TslintFormatters.ICheckstyleDependencies
@@ -86,7 +86,7 @@ export class Formatter extends Tslint.Formatters.AbstractFormatter {
     return this.xml.end(this.xmlEndOptions) + '\n';
   };
 
-  public format(failures: Tslint.RuleFailure[]) : string {
+  public format(failures: Tslint.RuleFailure[]): string {
     var i: number;
 
     this.processStart();
@@ -109,7 +109,7 @@ export class Formatter extends Tslint.Formatters.AbstractFormatter {
 
   protected initDependencies(
     d?: TslintFormatters.ICheckstyleDependencies
-  ) : void {
+  ): void {
     if (typeof d === 'undefined') {
       d = {};
     }
@@ -118,7 +118,7 @@ export class Formatter extends Tslint.Formatters.AbstractFormatter {
     this.xmlBuilder = (d.hasOwnProperty('xmlBuilder') && d.xmlBuilder) ? d.xmlBuilder : require('xmlbuilder');
   };
 
-  protected initProperties() : void {
+  protected initProperties(): void {
     this.absoluteFileName = true;
 
     this.xmlHeaderAttributes = {

@@ -26,14 +26,14 @@ context = {
   mockCliOutput: function (
     message?: any,
     ...optionalParams: any[]
-  ) : void {
+  ): void {
     context.mockCliOutputResult += message;
   },
 };
 
 export var option: NodeUnit.ITestGroup = {
 
-  'constructor': function (test: NodeUnit.Test) : void {
+  'constructor': function (test: NodeUnit.Test): void {
     test.expect(7);
 
     var myOption: TslintFormatterConvert.Option;
@@ -63,7 +63,7 @@ export var option: NodeUnit.ITestGroup = {
 
 export var optionString: NodeUnit.ITestGroup = {
 
-  'constructor': function (test: NodeUnit.Test) : void {
+  'constructor': function (test: NodeUnit.Test): void {
     test.expect(7);
 
     var myOption: TslintFormatterConvert.OptionString;
@@ -92,7 +92,7 @@ export var optionString: NodeUnit.ITestGroup = {
 
 export var handler: NodeUnit.ITestGroup = {
 
-  setUp: (callback: NodeUnit.ICallbackFunction) : void => {
+  setUp: (callback: NodeUnit.ICallbackFunction): void => {
     var paths: string[][] = [
       ['report', 'checkstyle.xml'],
       ['release', '1', 'checkstyle.xml'],
@@ -125,7 +125,7 @@ export var handler: NodeUnit.ITestGroup = {
     callback();
   },
 
-  'optionDefinitions': function (test: NodeUnit.Test) : void {
+  'optionDefinitions': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var cli: ICli = require('cli');
@@ -151,7 +151,7 @@ export var handler: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'prepareDirectory': function (test: NodeUnit.Test) : void {
+  'prepareDirectory': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var cli: ICli = require('cli');
@@ -178,7 +178,7 @@ export var handler: NodeUnit.ITestGroup = {
   },
 
   'release': {
-    'file': function (test: NodeUnit.Test) : void {
+    'file': function (test: NodeUnit.Test): void {
       test.expect(1);
 
       var cli: ICli = require('cli');
@@ -205,7 +205,7 @@ export var handler: NodeUnit.ITestGroup = {
       test.done();
     },
 
-    'stdOut': function (test: NodeUnit.Test) : void {
+    'stdOut': function (test: NodeUnit.Test): void {
       test.expect(1);
 
       var cli: ICli = require('cli');
@@ -226,7 +226,7 @@ export var handler: NodeUnit.ITestGroup = {
       outputMock = function (
         message?: any,
         ...optionalParams: any[]
-      ) : void {
+      ): void {
         outputActual = message;
       };
 
@@ -245,7 +245,7 @@ export var handler: NodeUnit.ITestGroup = {
     },
   },
 
-  'readInput': function (test: NodeUnit.Test) : void {
+  'readInput': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var cli: ICli = require('cli');
@@ -259,7 +259,7 @@ export var handler: NodeUnit.ITestGroup = {
     converter.main = function (
       args: string[],
       options: {[name: string]: string | number | boolean}
-    ) : void {
+    ): void {
       this.cliArgs = args;
     };
 
@@ -275,7 +275,7 @@ export var handler: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'cmdCheckstyle2Checkstyle': function (test: NodeUnit.Test) : void {
+  'cmdCheckstyle2Checkstyle': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var cli: ICli = require('cli');
@@ -288,7 +288,7 @@ export var handler: NodeUnit.ITestGroup = {
     cli.output = context.mockCliOutput;
 
     converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
-    converter.readInput = function () : string {
+    converter.readInput = function (): string {
       return FS.readFileSync(
         Path.join('fixtures', 'checkstyle-original.xml'),
         'utf8'
@@ -312,7 +312,7 @@ export var handler: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'cmdYaml2Checkstyle': function (test: NodeUnit.Test) : void {
+  'cmdYaml2Checkstyle': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var cli: ICli = require('cli');
@@ -325,7 +325,7 @@ export var handler: NodeUnit.ITestGroup = {
     cli.output = context.mockCliOutput;
 
     converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
-    converter.readInput = function () : string {
+    converter.readInput = function (): string {
       return FS.readFileSync(
         Path.join('fixtures', 'checkstyle-definition.yml'),
         'utf8'
@@ -349,7 +349,7 @@ export var handler: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'cmdYaml2CheckstyleRelative': function (test: NodeUnit.Test) : void {
+  'cmdYaml2CheckstyleRelative': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var cli: ICli = require('cli');
@@ -362,7 +362,7 @@ export var handler: NodeUnit.ITestGroup = {
     cli.output = context.mockCliOutput;
 
     converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
-    converter.readInput = function () : string {
+    converter.readInput = function (): string {
       return FS.readFileSync(
         Path.join('fixtures', 'checkstyle-definition.yml'),
         'utf8'
@@ -387,7 +387,7 @@ export var handler: NodeUnit.ITestGroup = {
   },
 
   'main': {
-    'checkstyle2checkstyle': function (test: NodeUnit.Test) : void {
+    'checkstyle2checkstyle': function (test: NodeUnit.Test): void {
       test.expect(1);
 
       var cli: ICli = require('cli');
@@ -402,7 +402,7 @@ export var handler: NodeUnit.ITestGroup = {
       cli.command = 'checkstyle2checkstyle';
 
       converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
-      converter.readInput = function () : string {
+      converter.readInput = function (): string {
         return FS.readFileSync(
           Path.join('fixtures', 'checkstyle-original.xml'),
           'utf8'
@@ -425,7 +425,7 @@ export var handler: NodeUnit.ITestGroup = {
       test.done();
     },
 
-    'yaml2checkstyleRelative': function (test: NodeUnit.Test) : void {
+    'yaml2checkstyleRelative': function (test: NodeUnit.Test): void {
       test.expect(1);
 
       var cli: ICli = require('cli');
@@ -440,7 +440,7 @@ export var handler: NodeUnit.ITestGroup = {
       cli.command = 'yaml2checkstyleRelative';
 
       converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
-      converter.readInput = function () : string {
+      converter.readInput = function (): string {
         return FS.readFileSync(
           Path.join('fixtures', 'checkstyle-definition.yml'),
           'utf8'
@@ -463,7 +463,7 @@ export var handler: NodeUnit.ITestGroup = {
       test.done();
     },
 
-    'yaml2checkstyle': function (test: NodeUnit.Test) : void {
+    'yaml2checkstyle': function (test: NodeUnit.Test): void {
       test.expect(1);
 
       var cli: ICli = require('cli');
@@ -478,7 +478,7 @@ export var handler: NodeUnit.ITestGroup = {
       cli.command = 'yaml2checkstyle';
 
       converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
-      converter.readInput = function () : string {
+      converter.readInput = function (): string {
         return FS.readFileSync(
           Path.join('fixtures', 'checkstyle-definition.yml'),
           'utf8'

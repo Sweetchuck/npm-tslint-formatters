@@ -13,7 +13,7 @@ import * as YamlFormatter from '../../../../lib/tslint/formatters/yamlFormatter'
 
 export var index: NodeUnit.ITestGroup = {
 
-  'failure2Json': function (test: NodeUnit.Test) : void {
+  'failure2Json': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var yamlFormatter: YamlFormatter.Formatter;
@@ -23,7 +23,7 @@ export var index: NodeUnit.ITestGroup = {
     yamlFormatter = new YamlFormatter.Formatter();
 
     failure = {
-      toJson: function () : string {
+      toJson: function (): string {
         return expected;
       },
     };
@@ -37,7 +37,7 @@ export var index: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'format': function (test: NodeUnit.Test) : void {
+  'format': function (test: NodeUnit.Test): void {
     test.expect(1);
 
     var yamlFormatter: YamlFormatter.Formatter;
