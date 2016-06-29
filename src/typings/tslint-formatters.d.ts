@@ -1,9 +1,7 @@
 /**
- * Created by andor on 11/29/15.
+ * @file
+ * Documentation missing.
  */
-
-/// <reference path="../../typings/tsd.d.ts" />
-/// <reference path="xmlbuilder.d.ts" />
 
 declare module 'tslint-formatters' {
 

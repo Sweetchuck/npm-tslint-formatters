@@ -3,8 +3,6 @@
  * NodeUnit tests for lib/tslint/formatters/checkstyleRelativeFormatter.
  */
 
-/// <reference path="../../../../typings/tsd.d.ts" />
-
 process.env.NODE_ENV = 'test';
 
 import * as NodeUnit from 'nodeunit';
@@ -12,13 +10,13 @@ import * as FS from 'fs';
 import * as TslintFormatters from 'tslint-formatters';
 import * as CheckstyleFormatter from '../../../../lib/tslint/formatters/checkstyleRelativeFormatter';
 
-export var formatter: NodeUnit.ITestGroup = {
+export let formatter: NodeUnit.ITestGroup = {
 
-  'resolveFileName': function (test: NodeUnit.Test) : void {
+  'resolveFileName': function (test: NodeUnit.Test): void {
     test.expect(1);
 
-    var fileName: string;
-    var checkstyleFormatter: CheckstyleFormatter.Formatter;
+    let fileName: string;
+    let checkstyleFormatter: CheckstyleFormatter.Formatter;
 
     checkstyleFormatter = new CheckstyleFormatter.Formatter();
     fileName = '.';
@@ -31,8 +29,8 @@ export var formatter: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'format': function (test: NodeUnit.Test) : void {
-    var checkstyleFormatter: CheckstyleFormatter.Formatter;
+  'format': function (test: NodeUnit.Test): void {
+    let checkstyleFormatter: CheckstyleFormatter.Formatter;
 
     checkstyleFormatter = new CheckstyleFormatter.Formatter();
 
@@ -47,19 +45,19 @@ export var formatter: NodeUnit.ITestGroup = {
     test.done();
   },
 
-  'process': function (test: NodeUnit.Test) : void {
-    var checkstyleFormatter: CheckstyleFormatter.Formatter;
-    var c: number;
-    var f: number;
-    var fileName: string;
-    var cases: {
+  'process': function (test: NodeUnit.Test): void {
+    let checkstyleFormatter: CheckstyleFormatter.Formatter;
+    let c: number;
+    let f: number;
+    let fileName: string;
+    let cases: {
       files: {
         [fileName: string]: TslintFormatters.ICheckstyleEntry[]
       },
       expected: string,
       message: string,
     }[] = [
-      require('../../../../fixtures/checkstyle-definition')
+      require('../../../../fixtures/checkstyle-definition'),
     ];
 
     test.expect(cases.length);

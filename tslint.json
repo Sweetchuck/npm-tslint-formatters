@@ -67,7 +67,7 @@
     "no-unused-expression": true,
     "no-unused-variable": true,
     "no-use-before-declare": true,
-    "no-var-keyword": false,
+    "no-var-keyword": true,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
     "one-line": [
@@ -106,7 +106,7 @@
     "typedef-whitespace": [
       true,
       {
-        "call-signature": "space",
+        "call-signature": "nospace",
         "index-signature": "nospace",
         "parameter": "nospace",
         "property-declaration": "nospace",

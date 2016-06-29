@@ -3,9 +3,6 @@
  * Documentation missing.
  */
 
-/// <reference path="../../../typings/tsd.d.ts" />
-/// <reference path="../../typings/tsd.d.ts" />
-
 import * as FS from 'fs';
 import * as Path from 'path';
 import * as mkDir from 'mkdirp';
@@ -39,8 +36,8 @@ export class Option {
     values?: {[name: string]: any}
   ) {
     if (typeof values !== 'undefined') {
-      var i: number;
-      var propertyName: string;
+      let i: number;
+      let propertyName: string;
       for (i = 0; i < this.properties.length; i++) {
         propertyName = this.properties[i];
         /* istanbul ignore else */
@@ -115,9 +112,9 @@ export class Handler {
    * for CLI.
    */
   public optionDefinitions: {(): CLIOptionDefinitions} = (): CLIOptionDefinitions => {
-    var options: CLIOptionDefinitions = {};
-    var name: string;
-    var option: Option;
+    let options: CLIOptionDefinitions = {};
+    let name: string;
+    let option: Option;
     for (name in this.options) {
       /* istanbul ignore else */
       if (this.options.hasOwnProperty(name)) {
@@ -140,7 +137,7 @@ export class Handler {
   ) => {
     this.cliArgs = args;
 
-    var optionName: string;
+    let optionName: string;
     for (optionName in options) {
       /* istanbul ignore else */
       if (options.hasOwnProperty(optionName)) {
@@ -175,7 +172,7 @@ export class Handler {
   };
 
   public cmdCheckstyle2Checkstyle: {(): void} = (): void => {
-    var delimiter: string = [
+    let delimiter: string = [
       '</checkstyle>',
       '<?xml version="1.0" encoding="UTF-8"?>',
       '<checkstyle>',
@@ -214,7 +211,7 @@ export class Handler {
   } = (
     report: TslintFormatters.IYamlReport
   ) : void => {
-    var f: number;
+    let f: number;
     for (f = 0; f < report.failures.length; f++) {
       this.formatter.processAddFailure(
         report.failures[f].name,
@@ -275,7 +272,7 @@ export class Handler {
   } = (
     fileName: string
   ) : void => {
-    var dirName: string = this.path.dirname(fileName);
+    let dirName: string = this.path.dirname(fileName);
 
     if (!this.fs.existsSync(dirName)) {
       mkDir.sync(dirName);

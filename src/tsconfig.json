@@ -5,8 +5,7 @@
     "sourceMap": false
   },
   "files": [
-    "../typings/js-yaml/js-yaml.d.ts",
-    "../typings/nodeunit/nodeunit.d.ts",
+    "../typings/index.d.ts",
     "bin/tslint-formatters-convert.ts",
     "lib/cli/TslintFormattersConvert.ts",
     "lib/tslint/formatters/checkstyleFormatter.ts",
@@ -19,8 +18,7 @@
     "tests/lib/tslint/formatters/index.ts",
     "tests/lib/tslint/formatters/yamlFormatter.ts",
     "tests/index.ts",
-    "typings/tsd.d.ts",
-    "typings/xmlbuilder.d.ts",
-    "index.ts"
+    "index.ts",
+    "typings/index.d.ts"
   ]
 }

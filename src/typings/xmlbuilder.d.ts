@@ -53,7 +53,7 @@ declare module 'xmlbuilder' {
     attributes?: IHeaderAttributes,
     options?: ICreateOptions,
     settings?: ICreateSettings
-  ) : IElement;
+  ): IElement;
 
   export interface IElement {
 
@@ -64,7 +64,7 @@ declare module 'xmlbuilder' {
 
     end(
       options: IEndOptions
-    ) : string;
+    ): string;
 
   }
 

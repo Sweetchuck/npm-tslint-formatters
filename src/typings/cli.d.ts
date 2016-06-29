@@ -5,8 +5,6 @@
  * @link https://www.npmjs.com/package/cli
  */
 
-/// <reference path="../../typings/tsd.d.ts" />
-
 /**
  * 0: Short name.
  * 1: Description.
@@ -78,7 +76,7 @@ interface ICli {
     /* tslint:enable:variable-name */
   ): void;
 
-  next() : string | boolean;
+  next(): string | boolean;
 
   parse(
     opts: CLIOptionDefinitions,
@@ -249,7 +247,7 @@ interface ICli {
 
 declare module 'cli' {
 
-  var cli: ICli;
+  let cli: ICli;
 
   export = cli;
 

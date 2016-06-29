@@ -10,6 +10,6 @@
 .istanbul.yml
 .npmignore
 .travis.yml
-data-merge-*.tgz
+tslint-formatters-*.tgz
 tsd.json
 tslint.json
