@@ -1,8 +1,23 @@
 {
-  "globalDevDependencies": {
+  "name": "tslint-formatters",
+  "homepage": "https://github.com/Sweetchuck/npm-tslint-formatters.git",
+  "version": "0.1.1",
+  "globalDependencies": {
     "js-yaml": "registry:dt/js-yaml#3.5.2+20160316171810",
     "mkdirp": "registry:dt/mkdirp#0.3.0+20160317120654",
-    "node": "registry:dt/node#6.0.0+20160621231320",
+    "node": "registry:dt/node#6.0.0+20160621231320"
+  },
+  "globalDevDependencies": {
     "nodeunit": "registry:dt/nodeunit#0.0.0+20160316155526"
-  }
+  },
+  "files": [
+    "lib/tslint/formatters/checkstyleFormatter.d.ts",
+    "lib/tslint/formatters/checkstyleRelativeFormatter.d.ts",
+    "lib/tslint/formatters/yamlFormatter.d.ts",
+    "lib/tslint/formatters/index.d.ts",
+    "lib/cli/TslintFormattersConvert.d.ts",
+    "src/typings/cli.d.ts",
+    "src/typings/tslint-formatters.d.ts",
+    "src/typings/xmlbuilder.d.ts"
+  ]
 }

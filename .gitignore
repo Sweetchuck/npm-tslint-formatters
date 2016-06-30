@@ -8,4 +8,5 @@
 /typings/
 
 /tslint-formatters-*.tgz
+/*.d.ts
 /*.js

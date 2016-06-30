@@ -2,7 +2,8 @@
 /coverage/
 /fixtures/
 /node_modules/
-/src/
+/src/*
+!/src/typings/
 /tests/
 /tmp/
 /typings/
@@ -11,5 +12,4 @@
 .npmignore
 .travis.yml
 tslint-formatters-*.tgz
-tsd.json
 tslint.json
