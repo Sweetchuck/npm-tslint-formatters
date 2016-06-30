@@ -1,7 +1,7 @@
 {
   "name": "tslint-formatters",
   "homepage": "https://github.com/Sweetchuck/npm-tslint-formatters.git",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "globalDependencies": {
     "js-yaml": "registry:dt/js-yaml#3.5.2+20160316171810",
     "mkdirp": "registry:dt/mkdirp#0.3.0+20160317120654",

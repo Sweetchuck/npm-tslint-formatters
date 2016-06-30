@@ -2,7 +2,7 @@
   "name": "tslint-formatters",
   "main": "index.js",
   "homepage": "https://github.com/Sweetchuck/npm-tslint-formatters.git",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Implements various formatters for tslint.",
   "keywords": [
     "typescript",
