@@ -21,7 +21,7 @@ export let index: NodeUnit.ITestGroup = {
     let f: number;
 
     for (f = 0; f < files.length; f++) {
-      if (files[f] === 'index.js') {
+      if (files[f] === 'index.js' || !files[f].match(/\.js$/)) {
         continue;
       }
 
