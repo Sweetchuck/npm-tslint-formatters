@@ -12,7 +12,7 @@ import * as TSLintFormatter from 'tslint-formatters';
 export let index: NodeUnit.ITestGroup = {
 
   'include': function (test: NodeUnit.Test): void {
-    test.expect(3);
+    test.expect(4);
 
     let propertyName: string;
     let idx: TSLintFormatter.IFormattersIndex = require('../../../../lib/tslint/formatters/index');

@@ -384,6 +384,43 @@ export let handler: NodeUnit.ITestGroup = {
     test.done();
   },
 
+  'cmdYaml2jsonGroupByFiles': function (test: NodeUnit.Test): void {
+    test.expect(1);
+
+    let cli: ICli = require('cli');
+    let fs: typeof FS = require('fs');
+    let path: typeof Path = require('path');
+    let jsYaml: typeof JsYaml = require('js-yaml');
+    let converter: TslintFormatterConvert.Handler;
+    let outputExpected: string;
+
+    cli.output = context.mockCliOutput;
+
+    converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
+    converter.readInput = function (): string {
+      return FS.readFileSync(
+        Path.join('fixtures', 'checkstyle-definition.yml'),
+        'utf8'
+      );
+    };
+
+    context.mockCliOutputResult = '';
+    converter.cmdYaml2JsonGroupByFiles();
+
+    outputExpected = FS
+      .readFileSync(Path.join('fixtures', 'output.01.jsonGroupByFiles.json'), 'utf8')
+      .split('%path%')
+      .join(Path.resolve('.') + Path.sep);
+
+    test.equal(
+      context.mockCliOutputResult,
+      outputExpected,
+      'The output is well written to the standard output.'
+    );
+
+    test.done();
+  },
+
   'main': {
     'checkstyle2checkstyle': function (test: NodeUnit.Test): void {
       test.expect(1);
@@ -451,6 +488,44 @@ export let handler: NodeUnit.ITestGroup = {
         .readFileSync(Path.join('fixtures', 'checkstyle-expected-2.xml'), 'utf8')
         .split('%path%')
         .join('');
+
+      test.equal(
+        outputExpected,
+        context.mockCliOutputResult,
+        'Output is correct'
+      );
+
+      test.done();
+    },
+
+    'yaml2jsonGroupByFiles': function (test: NodeUnit.Test): void {
+      test.expect(1);
+
+      let cli: ICli = require('cli');
+      let fs: typeof FS = require('fs');
+      let path: typeof Path = require('path');
+      let jsYaml: typeof JsYaml = require('js-yaml');
+      let converter: TslintFormatterConvert.Handler;
+      let outputExpected: string;
+
+      context.mockCliOutputResult = '';
+      cli.output = context.mockCliOutput;
+      cli.command = 'yaml2jsonGroupByFiles';
+
+      converter = new TslintFormatterConvert.Handler(fs, path, cli, jsYaml);
+      converter.readInput = function (): string {
+        return FS.readFileSync(
+          Path.join('fixtures', 'checkstyle-definition.yml'),
+          'utf8'
+        );
+      };
+
+      converter.main([], {});
+
+      outputExpected = FS
+        .readFileSync(Path.join('fixtures', 'output.01.jsonGroupByFiles.json'), 'utf8')
+        .split('%path%')
+        .join(Path.resolve('.') + Path.sep);
 
       test.equal(
         outputExpected,

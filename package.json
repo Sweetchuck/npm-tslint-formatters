@@ -75,7 +75,7 @@
     "pretest-custom": "npm run tsc",
     "test-custom": "nodeunit",
     "lint": "npm run lint-ts",
-    "lint-ts": "tslint --config tslint.json --format verbose $(git ls-files -- '*.ts')",
+    "lint-ts": "tslint --config tslint.json --format verbose --project src/tsconfig.json",
     "clear": "npm run clear-coverage && npm run clear-src && npm run clear-tmp",
     "clear-src": "rm -rf bin lib tasks tests",
     "clear-coverage": "rm -rf coverage",

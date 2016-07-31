@@ -9,6 +9,7 @@ import * as mkDir from 'mkdirp';
 import * as TslintFormatters from 'tslint-formatters';
 import * as CheckstyleAbs from '../tslint/formatters/checkstyleFormatter';
 import * as CheckstyleRel from '../tslint/formatters/checkstyleRelativeFormatter';
+import * as JsonGroupByFiles from '../tslint/formatters/jsonGroupByFilesFormatter';
 
 export class Option {
 
@@ -78,6 +79,7 @@ export class Handler {
   } = {
     yaml2checkstyle: 'Convert YAML report to Checkstyle with absolute file paths.',
     yaml2checkstyleRelative: 'Convert YAML report to Checkstyle with relative file paths.',
+    yaml2jsonGroupByFiles: 'Convert YAML report to JSON and group the messages by files.',
     checkstyle2checkstyle: 'Fix the multi-document problem with string replace.',
   };
 
@@ -89,7 +91,8 @@ export class Handler {
 
   protected jsYaml: typeof jsyaml;
 
-  protected formatter: CheckstyleAbs.Formatter = null;
+  protected checkstyleFormatter: CheckstyleAbs.Formatter = null;
+  protected jsonGroupByFileFormatter: JsonGroupByFiles.Formatter = null;
 
   protected cliArgs: string[] = [];
 
@@ -154,6 +157,10 @@ export class Handler {
         this.cmdYaml2CheckstyleRelative();
         break;
 
+      case 'yaml2jsonGroupByFiles':
+        this.cmdYaml2JsonGroupByFiles();
+        break;
+
       case 'checkstyle2checkstyle':
         this.cmdCheckstyle2Checkstyle();
         break;
@@ -162,13 +169,18 @@ export class Handler {
   };
 
   public cmdYaml2Checkstyle: {(): void} = (): void => {
-    this.formatter = new CheckstyleAbs.Formatter();
+    this.checkstyleFormatter = new CheckstyleAbs.Formatter();
     this.convertYaml2Checkstyle();
   };
 
   public cmdYaml2CheckstyleRelative: {(): void} = (): void => {
-    this.formatter = new CheckstyleRel.Formatter();
+    this.checkstyleFormatter = new CheckstyleRel.Formatter();
     this.convertYaml2Checkstyle();
+  };
+
+  public cmdYaml2JsonGroupByFiles: {(): void} = (): void => {
+    this.jsonGroupByFileFormatter = new JsonGroupByFiles.Formatter();
+    this.convertYaml2JsonGroupByFiles();
   };
 
   public cmdCheckstyle2Checkstyle: {(): void} = (): void => {
@@ -187,18 +199,29 @@ export class Handler {
     );
   };
 
+  public convertYaml2JsonGroupByFiles: {(): void} = (): void => {
+    this.jsonGroupByFileFormatter.processStart();
+
+    this.jsYaml.safeLoadAll(
+        this.readInput(),
+        this.addReportToJsonGroupByFiles
+    );
+
+    this.release(this.jsonGroupByFileFormatter.processEnd());
+  };
+
   /**
    * @access protected
    */
   public convertYaml2Checkstyle: {() : void} = () => {
-    this.formatter.processStart();
+    this.checkstyleFormatter.processStart();
 
     this.jsYaml.safeLoadAll(
       this.readInput(),
       this.addReportToCheckstyle
     );
 
-    this.release(this.formatter.processEnd());
+    this.release(this.checkstyleFormatter.processEnd());
   };
 
   /**
@@ -213,13 +236,38 @@ export class Handler {
   ) : void => {
     let f: number;
     for (f = 0; f < report.failures.length; f++) {
-      this.formatter.processAddFailure(
+      this.checkstyleFormatter.processAddFailure(
         report.failures[f].name,
         {
-          line: report.failures[f].startPosition.line,
-          column: report.failures[f].startPosition.character,
           severity: 'error',
           source: report.failures[f].ruleName,
+          line: report.failures[f].startPosition.line,
+          column: report.failures[f].startPosition.character,
+          message: report.failures[f].failure,
+        }
+      );
+    }
+  };
+
+  /**
+   * @access protected
+   */
+  public addReportToJsonGroupByFiles: {
+    (
+      report: TslintFormatters.IYamlReport
+    ) : void
+  } = (
+    report: TslintFormatters.IYamlReport
+  ) : void => {
+    let f: number;
+    for (f = 0; f < report.failures.length; f++) {
+      this.jsonGroupByFileFormatter.processAddFailure(
+        report.failures[f].name,
+        {
+          severity: 'error',
+          source: report.failures[f].ruleName,
+          line: report.failures[f].startPosition.line,
+          column: report.failures[f].startPosition.character,
           message: report.failures[f].failure,
         }
       );

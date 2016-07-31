@@ -18,6 +18,7 @@ export let index: NodeUnit.ITestGroup = {
         {
           checkstyle: {},
           checkstyleRelative: {},
+          jsonGroupByFiles: {},
           yaml: {},
         },
         null,

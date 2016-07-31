@@ -13,6 +13,7 @@
   "files": [
     "lib/tslint/formatters/checkstyleFormatter.d.ts",
     "lib/tslint/formatters/checkstyleRelativeFormatter.d.ts",
+    "lib/tslint/formatters/jsonGroupByFilesFormatter.d.ts",
     "lib/tslint/formatters/yamlFormatter.d.ts",
     "lib/tslint/formatters/index.d.ts",
     "lib/cli/TslintFormattersConvert.d.ts",

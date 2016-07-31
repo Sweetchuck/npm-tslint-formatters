@@ -29,13 +29,13 @@ declare module 'tslint-formatters' {
 
   export interface ICheckstyleEntry {
 
-    line: number;
-
-    column: number;
-
     severity: string;
 
     source: string;
+
+    line: number;
+
+    column: number;
 
     message: string;
 
