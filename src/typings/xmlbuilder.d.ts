@@ -5,67 +5,67 @@
 
 declare module 'xmlbuilder' {
 
-  export interface IHeaderAttributes {
+    export interface IHeaderAttributes {
 
-    version?: string;
+        version?: string;
 
-    encoding?: string;
+        encoding?: string;
 
-    standalone?: boolean;
+        standalone?: boolean;
 
-  }
+    }
 
-  export interface ICreateSettings {
+    export interface ICreateSettings {
 
-    allowSurrogateChars?: boolean;
+        allowSurrogateChars?: boolean;
 
-    skipNullAttributes?: boolean;
+        skipNullAttributes?: boolean;
 
-    headless?: boolean;
+        headless?: boolean;
 
-    ignoreDecorators?: boolean;
+        ignoreDecorators?: boolean;
 
-    separateArrayItems?: boolean;
+        separateArrayItems?: boolean;
 
-    stringify?: any;
-  }
+        stringify?: any;
+    }
 
-  export interface ICreateOptions {
+    export interface ICreateOptions {
 
-    pubID?: any;
+        pubID?: any;
 
-    sysID?: any;
+        sysID?: any;
 
-  }
+    }
 
-  export interface IEndOptions {
+    export interface IEndOptions {
 
-    pretty?: boolean;
+        pretty?: boolean;
 
-    indent?: string;
+        indent?: string;
 
-    newline?: string;
+        newline?: string;
 
-  }
+    }
 
-  export function create(
-    tagName: string,
-    attributes?: IHeaderAttributes,
-    options?: ICreateOptions,
-    settings?: ICreateSettings
-  ): IElement;
-
-  export interface IElement {
-
-    ele(
-      tagName: string,
-      attributes?: {[name: string]: string|number}
+    export function create(
+        tagName: string,
+        attributes?: IHeaderAttributes,
+        options?: ICreateOptions,
+        settings?: ICreateSettings
     ): IElement;
 
-    end(
-      options: IEndOptions
-    ): string;
+    export interface IElement {
 
-  }
+        ele(
+            tagName: string,
+            attributes?: {[name: string]: string|number}
+        ): IElement;
+
+        end(
+            options: IEndOptions
+        ): string;
+
+    }
 
 }

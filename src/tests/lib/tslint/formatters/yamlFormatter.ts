@@ -11,43 +11,43 @@ import * as YamlFormatter from '../../../../lib/tslint/formatters/yamlFormatter'
 
 export let index: NodeUnit.ITestGroup = {
 
-  'failure2Json': function (test: NodeUnit.Test): void {
-    test.expect(1);
+    'failure2Json': function (test: NodeUnit.Test): void {
+        test.expect(1);
 
-    let yamlFormatter: YamlFormatter.Formatter;
-    let failure: Lint.RuleFailure | any;
-    let expected: string = 'foo';
+        let yamlFormatter: YamlFormatter.Formatter;
+        let failure: Lint.RuleFailure | any;
+        let expected: string = 'foo';
 
-    yamlFormatter = new YamlFormatter.Formatter();
+        yamlFormatter = new YamlFormatter.Formatter();
 
-    failure = {
-      toJson: function (): string {
-        return expected;
-      },
-    };
+        failure = {
+            toJson: function (): string {
+                return expected;
+            },
+        };
 
-    test.equal(
-      expected,
-      yamlFormatter.failure2Json(failure),
-      ''
-    );
+        test.equal(
+            expected,
+            yamlFormatter.failure2Json(failure),
+            ''
+        );
 
-    test.done();
-  },
+        test.done();
+    },
 
-  'format': function (test: NodeUnit.Test): void {
-    test.expect(1);
+    'format': function (test: NodeUnit.Test): void {
+        test.expect(1);
 
-    let yamlFormatter: YamlFormatter.Formatter;
+        let yamlFormatter: YamlFormatter.Formatter;
 
-    yamlFormatter = new YamlFormatter.Formatter();
-    test.equal(
-      yamlFormatter.format([]),
-      '---\nfailures: []\n',
-      'Failure list is empty.'
-    );
+        yamlFormatter = new YamlFormatter.Formatter();
+        test.equal(
+            yamlFormatter.format([]),
+            '---\nfailures: []\n',
+            'Failure list is empty.'
+        );
 
-    test.done();
-  },
+        test.done();
+    },
 
 };

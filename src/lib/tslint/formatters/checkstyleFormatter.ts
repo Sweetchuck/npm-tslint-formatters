@@ -10,133 +10,121 @@ import * as TslintFormatters from 'tslint-formatters';
 
 export class Formatter extends Tslint.Formatters.AbstractFormatter {
 
-  protected absoluteFileName: boolean;
+    protected absoluteFileName: boolean;
 
-  protected path: typeof Path;
+    protected path: typeof Path;
 
-  protected xmlBuilder: typeof XmlBuilder;
+    protected xmlBuilder: typeof XmlBuilder;
 
-  protected xmlHeaderAttributes: XmlBuilder.IHeaderAttributes;
+    protected xmlHeaderAttributes: XmlBuilder.IHeaderAttributes;
 
-  protected xmlCreateOptions: XmlBuilder.ICreateOptions;
+    protected xmlCreateOptions: XmlBuilder.ICreateOptions;
 
-  protected xmlCreateSettings: XmlBuilder.ICreateSettings;
+    protected xmlCreateSettings: XmlBuilder.ICreateSettings;
 
-  protected xmlEndOptions: XmlBuilder.IEndOptions;
+    protected xmlEndOptions: XmlBuilder.IEndOptions;
 
-  protected xml: XmlBuilder.IElement = null;
+    protected xml: XmlBuilder.IElement = null;
 
-  protected files: {[fileName: string]: XmlBuilder.IElement};
+    protected files: {[fileName: string]: XmlBuilder.IElement};
 
-  constructor(
-    dependencies?: TslintFormatters.ICheckstyleDependencies
-  ) {
-    super();
+    constructor(dependencies?: TslintFormatters.ICheckstyleDependencies) {
+        super();
 
-    this.initDependencies(dependencies);
-    this.initProperties();
-  }
-
-  public resolveFileName: {
-    (
-      fileName: string
-    ) : string
-  } = (
-    fileName: string
-  ) : string => {
-    return this.absoluteFileName ? this.path.resolve(fileName) : fileName;
-  };
-
-  public processStart: {() : void} = () => {
-    this.xml = this.xmlBuilder.create(
-      'checkstyle',
-      this.xmlHeaderAttributes,
-      this.xmlCreateOptions,
-      this.xmlCreateSettings
-    );
-  };
-
-  public processAddFailure: {
-    (
-      fileName: string,
-      entry: TslintFormatters.ICheckstyleEntry
-    ) : void,
-  } = (
-    fileName: string,
-    entry: TslintFormatters.ICheckstyleEntry
-  ) => {
-    fileName = this.resolveFileName(fileName);
-
-    if (!this.files.hasOwnProperty(fileName)) {
-      this.files[fileName] = this.xml.ele('file', {name: fileName});
+        this.initDependencies(dependencies);
+        this.initProperties();
     }
 
-    this.files[fileName].ele('error', {
-      line: entry.line,
-      column: entry.column,
-      severity: entry.severity,
-      source: entry.source,
-      message: entry.message,
-    });
-  };
+    public resolveFileName: {
+        (fileName: string): string
+    } = (fileName: string): string => {
+        return this.absoluteFileName ? this.path.resolve(fileName) : fileName;
+    };
 
-  public processEnd: {() : string} = () => {
-    return this.xml.end(this.xmlEndOptions) + '\n';
-  };
+    public processStart: {(): void} = () => {
+        this.xml = this.xmlBuilder.create(
+            'checkstyle',
+            this.xmlHeaderAttributes,
+            this.xmlCreateOptions,
+            this.xmlCreateSettings
+        );
+    };
 
-  public format(failures: Tslint.RuleFailure[]): string {
-    let i: number;
+    public processAddFailure: {
+        (fileName: string,
+         entry: TslintFormatters.ICheckstyleEntry): void,
+    } = (fileName: string,
+         entry: TslintFormatters.ICheckstyleEntry) => {
+        fileName = this.resolveFileName(fileName);
 
-    this.processStart();
-
-    for (i = 0; i < failures.length; i++) {
-      this.processAddFailure(
-        failures[i].getFileName(),
-        {
-          line: failures[i].getStartPosition().getLineAndCharacter().line,
-          column: failures[i].getStartPosition().getLineAndCharacter().character,
-          severity: 'error',
-          source: failures[i].getRuleName(),
-          message: failures[i].getFailure(),
+        if (!this.files.hasOwnProperty(fileName)) {
+            this.files[fileName] = this.xml.ele('file', {name: fileName});
         }
-      );
-    }
 
-    return this.processEnd();
-  }
-
-  protected initDependencies(
-    d?: TslintFormatters.ICheckstyleDependencies
-  ): void {
-    if (typeof d === 'undefined') {
-      d = {};
-    }
-
-    this.path = (d.hasOwnProperty('path') && d.path) ? d.path : require('path');
-    this.xmlBuilder = (d.hasOwnProperty('xmlBuilder') && d.xmlBuilder) ? d.xmlBuilder : require('xmlbuilder');
-  };
-
-  protected initProperties(): void {
-    this.absoluteFileName = true;
-
-    this.xmlHeaderAttributes = {
-      version: '1.0',
-      encoding: 'UTF-8',
+        this.files[fileName].ele('error', {
+            line: entry.line,
+            column: entry.column,
+            severity: entry.severity,
+            source: entry.source,
+            message: entry.message,
+        });
     };
 
-    this.xmlCreateOptions = {};
-
-    this.xmlCreateSettings = {};
-
-    this.xmlEndOptions = {
-      pretty: true,
-      indent: '  ',
-      newline: '\n',
+    public processEnd: {(): string} = () => {
+        return this.xml.end(this.xmlEndOptions) + '\n';
     };
 
-    this.xml = null;
+    public format(failures: Tslint.RuleFailure[]): string {
+        let i: number;
 
-    this.files = {};
-  }
+        this.processStart();
+
+        for (i = 0; i < failures.length; i++) {
+            this.processAddFailure(
+                failures[i].getFileName(),
+                {
+                    line: failures[i].getStartPosition().getLineAndCharacter().line,
+                    column: failures[i].getStartPosition().getLineAndCharacter().character,
+                    severity: 'error',
+                    source: failures[i].getRuleName(),
+                    message: failures[i].getFailure(),
+                }
+            );
+        }
+
+        return this.processEnd();
+    }
+
+    protected initDependencies(d?: TslintFormatters.ICheckstyleDependencies): void {
+        if (typeof d === 'undefined') {
+            d = {};
+        }
+
+        this.path = (d.hasOwnProperty('path') && d.path) ? d.path : require('path');
+        this.xmlBuilder = (d.hasOwnProperty('xmlBuilder') && d.xmlBuilder) ? d.xmlBuilder : require('xmlbuilder');
+    };
+
+    protected initProperties(): void {
+        this.absoluteFileName = true;
+
+        this.xmlHeaderAttributes = {
+            version: '1.0',
+            encoding: 'UTF-8',
+        };
+
+        this.xmlCreateOptions = {};
+
+        this.xmlCreateSettings = {};
+
+        this.xmlEndOptions = {
+            pretty: true,
+            indent: '  ',
+            newline: '\n',
+        };
+
+        this.xml = null;
+
+        this.files = {};
+    }
 
 }

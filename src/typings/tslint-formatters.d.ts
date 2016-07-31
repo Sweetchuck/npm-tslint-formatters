@@ -5,70 +5,70 @@
 
 declare module 'tslint-formatters' {
 
-  import * as Path from 'path';
-  import * as XmlBuilder from 'xmlbuilder';
-  import * as Lint from 'tslint/lib/lint';
+    import * as Path from 'path';
+    import * as XmlBuilder from 'xmlbuilder';
+    import * as Lint from 'tslint/lib/lint';
 
-  export interface IFormattersIndex {
+    export interface IFormattersIndex {
 
-    checkstyle: Lint.IFormatter;
+        checkstyle: Lint.IFormatter;
 
-    checkstyleRelative: Lint.IFormatter;
+        checkstyleRelative: Lint.IFormatter;
 
-    yaml: Lint.IFormatter;
+        yaml: Lint.IFormatter;
 
-  }
+    }
 
-  export interface ICheckstyleDependencies {
+    export interface ICheckstyleDependencies {
 
-    path?: typeof Path;
+        path?: typeof Path;
 
-    xmlBuilder?: typeof XmlBuilder;
+        xmlBuilder?: typeof XmlBuilder;
 
-  }
+    }
 
-  export interface ICheckstyleEntry {
+    export interface ICheckstyleEntry {
 
-    severity: string;
+        severity: string;
 
-    source: string;
+        source: string;
 
-    line: number;
+        line: number;
 
-    column: number;
+        column: number;
 
-    message: string;
+        message: string;
 
-  }
+    }
 
-  export interface IFailurePosition {
+    export interface IFailurePosition {
 
-    character: number;
+        character: number;
 
-    line: number;
+        line: number;
 
-    position: number;
+        position: number;
 
-  }
+    }
 
-  export interface IReportEntry {
+    export interface IReportEntry {
 
-    endPosition: IFailurePosition;
+        endPosition: IFailurePosition;
 
-    failure: string;
+        failure: string;
 
-    name: string;
+        name: string;
 
-    ruleName: string;
+        ruleName: string;
 
-    startPosition: IFailurePosition;
+        startPosition: IFailurePosition;
 
-  }
+    }
 
-  export interface IYamlReport {
+    export interface IYamlReport {
 
-    failures: IReportEntry[];
+        failures: IReportEntry[];
 
-  }
+    }
 
 }
